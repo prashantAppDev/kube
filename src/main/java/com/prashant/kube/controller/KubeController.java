@@ -30,4 +30,9 @@ public class KubeController {
         Student s = studentService.addStudent(student);
         return ResponseEntity.status(201).body(s.getId());
     }
+
+    @GetMapping("/greetings")
+    public ResponseEntity<String> getGreetings() {
+        return ResponseEntity.ok("Hello from Springboot!");
+    }
 }
