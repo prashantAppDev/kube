@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kube-manual
+spec:
+  containers:
+    - image: prashant0701/kube
+      name: kube-container
+      ports:
+      - containerPort: 8080
+        protocol: TCP
