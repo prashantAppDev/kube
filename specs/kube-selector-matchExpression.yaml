@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: kube-replicaset
+spec:
+  replicas: 3
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - kube
+  template:
+    metadata:
+      labels:
+        app: kube
+    spec:
+      containers:
+        - name: kube-container
+          image: prashant0701/kube
