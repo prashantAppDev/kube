@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: kube-liveliness
+  name: kube-liveness
 spec:
   containers:
     - image: prashant0701/kube-unhealthy
