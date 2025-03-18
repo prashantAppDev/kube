@@ -12,19 +12,12 @@ import java.util.UUID;
 
 @RestController
 public class KubeController {
-    private static int count = 0;
     @Autowired
     private StudentService studentService;
 
     @GetMapping("/")
-    public ResponseEntity<String> getCount() {
-        count++;
-        if(count<=5) {
-            return ResponseEntity.ok().body("Request number: " + count);
-        }
-        else {
-            throw new ServerErrorException("Request count has reached limit", new Exception("Some exception occurred"));
-        }
+    public ResponseEntity<String> getHealth() {
+        return ResponseEntity.ok().body("");
     }
 
     @GetMapping("/students")
