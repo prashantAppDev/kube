@@ -1,0 +1,7 @@
+spec:
+  containers:
+    - image: some-image
+  envFrom:
+    - prefix: CONFIG_
+  configMapRef:
+  name: my-config-map
