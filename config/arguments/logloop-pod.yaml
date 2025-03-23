@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: logloop-pod
+spec:
+  containers:
+      - name: log-generator
+        image: prashant0701/arguments
+        args: ["5"]     # Override default interval to 5 seconds
+        volumeMounts:
+          - name: log-storage
+            mountPath: /tmp/logs
+  volumes:
+    - name: log-storage
+      emptyDir: {}
