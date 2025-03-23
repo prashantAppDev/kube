@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: logloop-env-from-configmap
+spec:
+  containers:
+    - name: log-generator
+      image: prashant0701/env
+      env:
+      - name: INTERVAL
+        valueFrom:
+          configMapKeyRef:
+            name: logloop-config
+            key: interval
+      volumeMounts:
+        - name: log-storage
+          mountPath: /tmp/logs
+  volumes:
+    - name: log-storage
+      emptyDir: {}
