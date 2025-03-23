@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: logloop-pod
+spec:
+  containers:
+    - name: log-generator
+      image: prashant0701/env
+      env:
+        - name: INTERVAL    # Adding a variable with value 15
+          value: "15"
+      volumeMounts:
+        - name: log-storage
+          mountPath: /tmp/logs
+  volumes:
+    - name: log-storage
+      emptyDir: {}
