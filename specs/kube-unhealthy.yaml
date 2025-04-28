@@ -8,7 +8,7 @@ spec:
       name: kube-container
       livenessProbe:
         httpGet:
-          path: /
+          path: /error
           port: 8080
         initialDelaySeconds: 15
       ports:
