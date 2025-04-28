@@ -5,7 +5,6 @@ import com.prashant.kube.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ServerErrorException;
 
 import java.util.List;
 import java.util.UUID;
@@ -15,9 +14,21 @@ public class KubeController {
     @Autowired
     private StudentService studentService;
 
+    private static int count = 0;
+
     @GetMapping("/")
     public ResponseEntity<String> getHealth() {
         return ResponseEntity.ok().body("");
+    }
+
+    @GetMapping("/error")
+    public ResponseEntity<String> getError() {
+        if(count < 3) {
+            count ++;
+            return ResponseEntity.ok().body("");
+        } else {
+            throw new RuntimeException("Internal Server Error");
+        }
     }
 
     @GetMapping("/students")
@@ -38,6 +49,6 @@ public class KubeController {
 
     @GetMapping("/greetings")
     public ResponseEntity<String> getGreetings() {
-        return ResponseEntity.ok("Hello from Springboot!");
+        return ResponseEntity.ok("Hello from version v2!");
     }
 }
